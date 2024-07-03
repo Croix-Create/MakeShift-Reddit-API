@@ -19,8 +19,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [Controller::class, 'index'])->name('home');
+Route::get('/', [Controller::class, 'showPosts'])->name('home');
 Route::get('showPosts', [Controller::class, 'showPosts']);
 
 Route::get('posts/index', [PostController::class,'index']);
+
 Route::get('posts/create', [PostController::class,'create']);
+Route::post('posts', [PostController::class, 'store']);
+
+Route::get('posts/{post:id}/edit', [PostController::class, 'edit']);
+
+Route::patch('admin/posts/{post:id}/', [PostController::class, 'update']);
+Route::delete('admin/posts/{post:id}/', [PostController::class, 'destroy']);
+
