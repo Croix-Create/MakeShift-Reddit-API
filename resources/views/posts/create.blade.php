@@ -10,7 +10,7 @@
 </style>
 
 <x-layout>
-            <form method="POST" action="/posts/store" enctype="multipart/form-data">
+            <form method="POST" action="/store" enctype="multipart/form-data">
                 @csrf
 
                 <div class="inputDiv">

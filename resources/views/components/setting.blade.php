@@ -8,10 +8,10 @@
         <aside class="w-48 flex-shrink-0">
             <ul>
                 <li class="pb-6">
-                    <a href="/admin/posts" class="{{ request()->is('admin/posts') ? 'text-blue-500' : '' }}">All Posts</a>
+                    <a href="/posts" class="{{ request()->is('/posts') ? 'text-blue-500' : '' }}">All Posts</a>
                 </li>
                 <li>
-                    <a href="/admin/posts/create" class="{{ request()->is('admin/posts/create') ? 'text-blue-500' : '' }}">New Post</a>
+                    <a href="posts/create" class="{{ request()->is('posts/create') ? 'text-blue-500' : '' }}">New Post</a>
                 </li>
             </ul>
         </aside>

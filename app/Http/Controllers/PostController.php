@@ -40,7 +40,7 @@ class PostController extends BaseController
 
         Post::create($attributes);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'You made a post'); // did you add a success capture in the UI?
     }
 
     public function edit(Post $post)

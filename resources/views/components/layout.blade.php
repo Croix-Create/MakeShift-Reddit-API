@@ -116,14 +116,19 @@
                 <a href="/showPosts" class="ml-3 text-s">Trending on Reddit</a>
 
                 <a href="/search" class="ml-3 text-s">Search posts</a>
+                    
+                <a href="/sessions/login" class="ml-3 text-s">Sign In</a>
+
+                <a href="/sessions/create" class="ml-3 text-s">Register</a>
+
 
             </div>
 
-            <div style="display: flex; flex-direction: column; width: 16%; margin-left: auto;">
+                <div style="display: flex; flex-direction: column; width: 16%; margin-left: auto;">
 
-            <h1 style="font-size: 16px; margin-left: -26px;">
-            <a href="/showPosts"> Specno Technical</a>
-            </h1>
+                <h1 style="font-size: 16px; margin-left: -26px;">
+                <a href="/showPosts"> Specno Technical</a>
+                </h1>
 
 
             </div>

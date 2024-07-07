@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -20,15 +21,24 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [Controller::class, 'showPosts'])->name('home');
+
+// posts
+
 Route::get('showPosts', [Controller::class, 'showPosts']);
 
 Route::get('posts/index', [PostController::class,'index']);
 
 Route::get('posts/create', [PostController::class,'create']);
-Route::post('posts/create', [PostController::class, 'store']);
+Route::post('posts/store', [PostController::class, 'store']);
 
 Route::get('posts/{post:id}/edit', [PostController::class, 'edit']);
+Route::patch('/posts/{post:id}/', [PostController::class, 'update']);
 
-Route::patch('admin/posts/{post:id}/', [PostController::class, 'update']);
-Route::delete('admin/posts/{post:id}/', [PostController::class, 'destroy']);
+Route::delete('/posts/{post:id}/', [PostController::class, 'destroy']);
+
+// sessions
+
+
+Route::post('/sessions', [RegController::class, 'store'])->auth('guest');
+Route::post('/register', [RegController::class, 'store'])->auth('guest');
 

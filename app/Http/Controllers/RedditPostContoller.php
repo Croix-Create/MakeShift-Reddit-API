@@ -20,9 +20,9 @@ class RedditPostController extends BaseController
 
     public function getPosts(): View
     {
-    $limit = 10;
-    $subReddit = 'all';
-    $posts = RedditPost::getPosts($subReddit, $limit);
+        $limit = 10;
+        $subReddit = 'all';
+        $posts = RedditPost::getPosts($subReddit, $limit);
 
     return view('trending.show', compact('posts'));
     }
