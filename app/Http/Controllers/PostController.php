@@ -14,7 +14,7 @@ class PostController extends BaseController
     {
         return view('posts.index', [
             'posts' => Post::latest()->filter(
-                request(['search', 'category', 'author'])
+                request(['search', 'vote', 'author']) // addded vote into query // check supported model dependencies
             )->paginate(6)->withQueryString()
 
         ]);
@@ -45,7 +45,7 @@ class PostController extends BaseController
 
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]); /// add view for thsi end point
+        return view('posts.edit', ['post' => $post]);
     }
 
     public function update(Post $post)

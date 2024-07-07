@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','url', 'score'];
+    protected $fillable = ['title','slug', 'score'];
 
-    protected $with = ['category', 'author', 'vote'];
+    protected $with = ['title', 'author', 'vote'];
 
     public function scopeFilter($query, array $filters)
     {

@@ -14,39 +14,38 @@ class RedditPost extends Model
         'author',
         'score',
         'url',
-        'body',
     ];
 
     protected $client;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client, string $defaultBody = '')
     {
         $this->client = $client;
+        $this->defaultBody = $defaultBody;
     }
 
     public function getTitleAttribute($value)
     {
-        return ucfirst($value); // Capitalize the first letter of the title
+        return ucfirst($value);
     }
 
     public function getAuthorAttribute($value)
     {
-        return e($value); // Escape HTML to prevent XSS vulnerabilities
+        return e($value);
     }
 
     public function getScoreAttribute($value)
     {
-        return number_format($value); // Format the score as a comma-separated number (optional)
+        return number_format($value);
     }
 
     public function getUrlAttribute($value)
     {
-        return $value; // No change needed for URL
+        return $value;
     }
 
     public function getBodyAttribute($value)
     {
-        // You can optionally process the body content here (e.g., truncate or convert Markdown)
         return $value;
     }
 
@@ -75,7 +74,7 @@ class RedditPost extends Model
 
             return $redditPosts;
         } else {
-            // Handle unsuccessful response (e.g., log error or throw exception)
+            
             return [];
         }
     }

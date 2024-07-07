@@ -1,16 +1,40 @@
+<style>
+
+.inputDiv
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+</style>
+
 <x-layout>
-            <form method="POST" action="/posts/create" enctype="multipart/form-data">
+            <form method="POST" action="/posts/store" enctype="multipart/form-data">
                 @csrf
 
-                <x-form.input name="title" />
+                <div class="inputDiv">
 
-                <x-form.textarea name="body" />
+                    <div style="width: 1200px;">
+                        <h1>Set the title of your post:</h1>
+                        <x-form.input name="title" />
+                    </div>
 
-                <x-form.input name="slug"/>
+                    
+                    <div style="width: 1400px;">
+                        <h1>Time to get creative!</h1>
+                        <x-form.textarea name="body" />
+                    </div>
+                    
+                    <div>
+                        <h1>Set the URI for your post</h1>
+                        <x-form.input name="slug"/>
+                    </div>
+                    
 
-                    @error('category')
-                    <p class="text-red-500 text-xs mt-2"> {{$message}}</p>
-                    @enderror
+                </div>
+
+
                 </div>
 
                 <div class="flex justify-end mt-6  pt-6 border-t border-blue-200 pt-6">
