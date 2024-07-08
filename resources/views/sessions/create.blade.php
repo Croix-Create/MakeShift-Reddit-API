@@ -23,7 +23,7 @@
                     
                     <div>
                         <h1>What's your email?</h1>
-                        <x-form.textarea name="email" />
+                        <x-form.input name="email" />
                     </div>
                     
                     <div>

@@ -5,7 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
-class RegisterController extends BaseController
+class RegController extends BaseController
 {
     public function create()
     {

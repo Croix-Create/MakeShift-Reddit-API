@@ -14,6 +14,6 @@
         {{ $attributes(['value' => old($name)]) }}
     >
     @error($name)
-    <p class="text-green-500 text-xs mt-1">{{ $message }}</p>
+    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
     @enderror
 </div>

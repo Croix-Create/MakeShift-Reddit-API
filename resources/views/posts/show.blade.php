@@ -39,18 +39,11 @@
                             Back to Posts
                         </a>
 
-                        <div class="space-x-2">
-                            <x-category-button :category="$post->category"></x-category-button>
-                        </div>
                     </div>
 
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10 text-blue-600">
                         {{ $post->title }}
                     </h1>
-
-                    <div>
-                        {!! $post->excerpt !!}
-                    </div>
 
                     <div class="space-y-4 lg:text-lg leading-loose">
                         {!! $post->body  !!}

@@ -105,7 +105,7 @@
 
 <section class="px-6 py-8">
 
-    <nav>
+    <nav style="padding-bottom: 50px;">
         
         <div class="ui-block" style="width: 100%">
 

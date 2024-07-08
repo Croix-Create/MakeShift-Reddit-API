@@ -29,7 +29,7 @@ Route::get('showPosts', [Controller::class, 'showPosts']);
 Route::get('posts/index', [PostController::class,'index']);
 
 Route::get('posts/create', [PostController::class,'create']);
-Route::post('posts/store', [PostController::class, 'store']);
+Route::post('/store', [PostController::class, 'store']);
 
 Route::get('posts/{post:id}/edit', [PostController::class, 'edit']);
 Route::patch('/posts/{post:id}/', [PostController::class, 'update']);
@@ -39,6 +39,6 @@ Route::delete('/posts/{post:id}/', [PostController::class, 'destroy']);
 // sessions
 
 
-Route::post('/sessions', [RegController::class, 'store'])->auth('guest');
-Route::post('/register', [RegController::class, 'store'])->auth('guest');
+Route::get('/sessions/create', [RegController::class, 'create']);
+Route::post('/store', [RegController::class, 'store']);
 
