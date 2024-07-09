@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="//unpkg.com/alpinejs" defer></script>
 
@@ -115,7 +116,13 @@
 
                 <a href="/showPosts" class="ml-3 text-s">Trending on Reddit</a>
 
-                <a href="/search" class="ml-3 text-s">Search posts</a>
+                <button id="search-button" class="ml-3 text-s">Search posts</button>
+
+                <div id="search-bar" class="hidden">
+                    <form action="/index" method="GET"> <input type="text" name="search" placeholder="Search">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
                     
                 <a href="/sessions/login" class="ml-3 text-s">Sign In</a>
 
@@ -143,15 +150,13 @@
     {{  $slot }}
 </section>
 
-
-<div id="footer-branch">
-    <footer id="newsletter" class="border border-opacity-5 rounded-xl rounded-full text-center">
-
-
-
-
-    </footer>
-</div>
+<script>
+    $(document).ready(function() {
+    $('#search-button').click(function() {
+        $('#search-bar').toggleClass('hidden'); // Toggle visibility on click
+    });
+});
+</script>
 
 
 @if (session()->has('success'))

@@ -7,22 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    use HasFactory;
+    protected $fillable = ['user_id', 'votable_id', 'votable_type', 'vote'];
 
-
-    public function post()
+    public function user()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function author()
+    public function votable()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->morphTo();
     }
 
-
-    public function vote() 
-    {
-        return $this->belongsTo(Post::class);
-    }
 }

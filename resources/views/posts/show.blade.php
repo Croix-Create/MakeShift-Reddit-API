@@ -1,3 +1,11 @@
+,<style>
+    .vote 
+    {
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+
 <x-layout>
 
     <section class="px-6 py-8">
@@ -49,6 +57,17 @@
                         {!! $post->body  !!}
                     </div>
                 </div>
+
+                <div class="vote">
+                <form action="{{ route('vote', $post->id) }}" method="POST">
+                    @csrf <button type="submit" name="vote" value="1">Upvote</button>
+                </form>
+
+                <form action="{{ route('vote', $post->id) }}" method="POST">
+                    @csrf <button type="submit" name="vote" value="-1">Downvote</button>
+                </form>
+        </div>
+
             <section class="col-span-8 col-start-5 mt-10 space-y-5">
 
                 <x-panel>

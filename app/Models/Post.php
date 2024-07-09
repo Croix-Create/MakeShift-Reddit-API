@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','slug', 'score'];
+    protected $fillable = ['title','slug'];
 
     protected $with = ['title', 'author', 'vote'];
 
@@ -23,20 +23,20 @@ class Post extends Model
                 ->orWhere('body', 'like', '%' . request('search') . '%'))
         );
 
-        $query->when($filters['vote'] ?? false, fn($query, $category) =>
+        $query->when($filters['vote'] ?? false, fn($query, $vote) =>
 
         $query
             ->whereHas('vote', fn($query) =>
-                $query->where('slug', $category)
+                $query->where('slug', $vote)
             )
         );
 
 
-        $query->when($filters['category'] ?? false, fn($query, $category) =>
+        $query->when($filters['vote'] ?? false, fn($query, $vote) =>
 
         $query
-            ->whereHas('category', fn($query) =>
-                $query->where('slug', $category)
+            ->whereHas('vote', fn($query) =>
+                $query->where('slug', $vote)
             )
         );
 
@@ -59,12 +59,7 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
+    
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
