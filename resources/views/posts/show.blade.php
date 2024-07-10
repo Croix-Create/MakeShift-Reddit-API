@@ -13,7 +13,6 @@
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                 <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                    <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" class="rounded-xl">
 
                     <p class="mt-4 block text-gray-400 text-xs">
                         Published
@@ -24,7 +23,7 @@
                         <img src="/images/lary-avatar.svg">
                         <div class="ml-3 text-left">
                             <h5 class="font-bold">
-                                <a href="/?author={{ $post->author->username }}"> By {{ $post->author->name }}
+                                <a href="/?author={{ $post->author->username }}"> By {{ $post->username }}
                             </h5>
                         </div>
                     </div>
@@ -58,7 +57,17 @@
                     </div>
                 </div>
 
-                <div class="vote">
+        <div class="vote">
+                <form action="{{ route('vote', $post->id) }}" method="GET">
+                    @csrf <p>{{$totalUpvotes}}</p>
+                </form>
+
+                <form action="{{ route('vote', $post->id) }}" method="GET">
+                    @csrf <p>{{$totalDownvotes}}</p>
+                </form>
+        </div>
+
+        <div class="vote">
                 <form action="{{ route('vote', $post->id) }}" method="POST">
                     @csrf <button type="submit" name="vote" value="1">Upvote</button>
                 </form>
@@ -75,11 +84,10 @@
                         @csrf
 
                         <header class="flex items-center">
-                            <img src="https://i.pravatar.cc/60?u={{ auth()->id() }}"
                                  width="60"
                                  length="60"
                                  class="rounded-full p-4">
-                            <h2 class="ml-3">Want to participate?</h2>
+                            <h2 class="ml-3">You have comment?</h2>
                         </header>
 
                         <div class="mt-3">
@@ -87,7 +95,7 @@
                                       class="w-full focus:outline-none focus:ring text-sm"
                                       id=""
                                       rows="5"
-                                      placeholder="Quick, think of something to say!" required></textarea>
+                                      placeholder="Say anythang!" required></textarea>
                             @error('body')
                                 <span class="text-xs text-red-200">{{ $message }}</span>
                             @enderror
@@ -103,13 +111,12 @@
                     </form>
                 </x-panel>
 
-
-
                     @foreach ($post->comments as $comment)
                         <x-post-comment
                             :comment="$comment">
                         </x-post-comment>
                     @endforeach
+                    
                 </section>
             </article>
         </main>

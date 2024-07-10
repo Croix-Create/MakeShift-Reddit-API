@@ -9,6 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['comment_id','slug', 'body'];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function post()
     {
@@ -20,9 +27,14 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function thread() 
+    {
+         return $this->belongsTo(Comment::class, 'comment_id');
+    }
+
 
     public function vote() 
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Vote::class);
     }
 }

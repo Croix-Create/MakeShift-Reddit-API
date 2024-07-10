@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vote');
+            $table->integer('upvote');
+            $table->integer('downvote');
             $table->foreignId('user_id');
             $table->foreignId('post_id')->nullable();
             $table->foreignId('comment_id')->nullable();

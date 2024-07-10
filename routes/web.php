@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\VoteController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,13 @@ Route::patch('/posts/{post:id}/', [PostController::class, 'update']);
 
 Route::delete('/posts/{post:id}/', [PostController::class, 'destroy']);
 
+// threads
+
+Route::post('posts/{post:slug}/comments', [CommentController::class, 'store']);
+
+Route::post('components/post-comment/{comment:slug}/comments', [CommentController::class, 'thread']);
+
+
 // sessions
 
 
@@ -48,3 +57,12 @@ Route::post('/store', [RegController::class, 'store']);
 
 Route::get('sessions/login', [SessionController::class,'create']);
 Route::post('/store', [SessionController::class,'store']);
+
+
+// vote
+
+// Route for comment votes
+Route::get('/comments/{id}/votes', [VoteController::class,'create']);
+
+// Route for post votes
+Route::get('/posts/{id}/votes', [VoteController::class,'create']);
